@@ -1,0 +1,35 @@
+type Query {
+  getUsers: [User]
+  getMovies_catalog: [Movie_catalog]
+  #   loginUser(email:String,password:String):User
+}
+
+
+type Mutation {
+  createUser(name: String, email: String, password: String): User
+  createMovie_catalog(
+    tittle: String
+    description: String
+    likes: Int
+    image: String
+    date_of_released: String
+  ): Movie_catalog
+}
+
+
+type User {
+  _id: ID
+  name: String
+  email: String
+  password: String
+}
+
+type Movie_catalog {
+  id: ID
+  title: String
+  description: String
+  likes: Int
+  image: String
+  data_of_released: String
+}
+
