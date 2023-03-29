@@ -11,7 +11,25 @@ async getUsers() {
 async getMovies_catalog() {
     const movies_catalog = await Movie_catalog.find();
     return movies_catalog
+},
+async loginUser(_, { email,password }) {
+    const user = await User.findOne({email,password});
+    if(!user){
+        throw new Error('El usuario no existe')
+       }
+    return user
+},
+
+async findByTitle(_, { title }) {
+    const movie = await Movie_catalog.find({title});
+    // if(!employee){
+    //     throw new Error('El empleado no existe')
+    //    }
+    return movie
 }
+
+
+
 
 }
 

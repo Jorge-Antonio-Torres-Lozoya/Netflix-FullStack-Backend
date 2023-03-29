@@ -3,9 +3,9 @@ import Movie_catalog from "../models/Movie_catalog.js";
 
 const Mutation = {
 
-async createMovie_catalog( _ , { tittle,description,likes,image,date_of_released} ) {
-    const newMovie_catalog = { tittle,description,likes,image,date_of_released };
-    const movie_catalogExiste = await Movie_catalog.findOne({tittle })
+async createMovie_catalog( _ , { title,description,likes,image,date_of_released} ) {
+    const newMovie_catalog = { title,description,likes,image,date_of_released };
+    const movie_catalogExiste = await Movie_catalog.findOne({title })
     if (movie_catalogExiste) {
         throw new Error('Esa pelicula ya existe')
     }
@@ -21,6 +21,11 @@ async createUser( _ , { name,email,password} ) {
     }
     const user = await User.create( newUser ); //returns { }
     return user
+},
+
+async updateLikes_catalog( _, { _id,likes} ) {
+    //const employee = { name, age, position, code };
+    return await Movie_catalog.findByIdAndUpdate(_id, { likes }, {new: true})
 }
 
 

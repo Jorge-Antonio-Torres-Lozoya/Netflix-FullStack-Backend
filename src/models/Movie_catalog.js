@@ -18,7 +18,7 @@ const movie_catalogSchema = new Schema( {
         require: true
     },
     date_of_released: {
-        type: String,
+        type: Number,
         require: true
     }
    
