@@ -21,7 +21,8 @@ async loginUser(_, { email,password }) {
 },
 
 async findByTitle(_, { title }) {
-    const movie = await Movie_catalog.find({title});
+    const regex = new RegExp(title, 'i');
+    const movie = await Movie_catalog.find({title:regex});
     // if(!employee){
     //     throw new Error('El empleado no existe')
     //    }
