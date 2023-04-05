@@ -9,7 +9,7 @@ async createMovie_catalog( _ , { title,description,likes,image,date_of_released}
     if (movie_catalogExiste) {
         throw new Error('Esa pelicula ya existe')
     }
-    const movie_catalog = await Movie_catalog.create( newMovie_catalog ); //returns { }
+    const movie_catalog = await Movie_catalog.create( newMovie_catalog ); 
     return movie_catalog
 },
 
@@ -19,12 +19,11 @@ async createUser( _ , { name,email,password} ) {
     if (userExiste) {
         throw new Error('Ese usuario ya existe')
     }
-    const user = await User.create( newUser ); //returns { }
+    const user = await User.create( newUser ); 
     return user
 },
 
 async updateLikes_catalog( _, { _id,likes} ) {
-    //const employee = { name, age, position, code };
     return await Movie_catalog.findByIdAndUpdate(_id, { likes }, {new: true})
 }
 
