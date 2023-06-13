@@ -15,6 +15,10 @@ const server = new GraphQLServer( {
     typeDefs: path.join( __dirname, "graphql/schema.graphql" ),  // -> /c/Users/carlf/Desktop/b17-web/graphql/schema.graphql //http:heroku-app.com/graphql/schema.graphql"
     resolvers: resolvers                                                     
 } )
-server.express.use(cors());
+server.express.use(cors({
+    origin: '*', // Configura aquí los orígenes permitidos, ej. 'http://localhost:3000'
+    methods: ['GET', 'POST'], // Configura los métodos permitidos
+    allowedHeaders: '*', // Configura '*' para permitir todos los encabezados
+  }));
 
 export default server
