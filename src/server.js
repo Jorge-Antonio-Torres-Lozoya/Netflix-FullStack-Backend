@@ -31,18 +31,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 console.log(path.join(__dirname, "graphql/schema.graphql"));
 
-const allowCrossOrigin = (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-};
+// const allowCrossOrigin = (req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// };
 
 const server = new GraphQLServer({
   typeDefs: path.join(__dirname, "graphql/schema.graphql"),
   resolvers
 });
 
-server.express.use(allowCrossOrigin);
+// server.express.use(allowCrossOrigin);
 
 export default server;
