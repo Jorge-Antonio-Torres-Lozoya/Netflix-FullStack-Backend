@@ -43,8 +43,6 @@ const server = new GraphQLServer({
   resolvers
 });
 
-server.express.use((req, res, next) => {
-  allowCrossOrigin(req, res, next);
-});
+server.express.use(allowCrossOrigin);
 
 export default server;
