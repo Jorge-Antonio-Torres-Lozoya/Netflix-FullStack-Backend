@@ -27,7 +27,11 @@ const app = express();
 //   credentials: true
 // }));
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://snazzy-eclair-789fc7.netlify.app', // Reemplaza con tu URL de frontend
+  methods: ['GET', 'POST', 'OPTIONS'], // Agrega los métodos que necesites permitir
+  allowedHeaders: ['Content-Type'], // Agrega los encabezados permitidos
+}));
 
 const server = new GraphQLServer({
   typeDefs,
